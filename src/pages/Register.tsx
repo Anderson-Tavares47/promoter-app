@@ -1,33 +1,39 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { InputStyled } from "@/components/LabelStyled";
+import { ButtonStyled } from "@/components/ButtonStyled";
 
 export default function Register() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [company, setCompany] = useState('');
-  const currentUser = 'Employee';
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [company, setCompany] = useState("");
+  const currentUser = "Employee";
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (username && company !== " ") {
       try {
-        const response = await axios.post('http://localhost:3001/api/register', {
-          username,
-          company,
-          password,
-          currentUser
-        });
+        const response = await axios.post(
+          "http://localhost:3001/api/register",
+          {
+            username,
+            company,
+            password,
+            currentUser,
+          }
+        );
 
-        router.push('/Login');
-
+        router.push("/Login");
       } catch (error) {
-        alert('erro ao acessar o serviço, aguarde alguns instantes e tente novamente')
+        alert(
+          "erro ao acessar o serviço, aguarde alguns instantes e tente novamente"
+        );
       }
     } else {
-      alert('preecha os campos')
+      alert("preecha os campos");
     }
   };
 
@@ -35,30 +41,32 @@ export default function Register() {
     <div>
       <h2>Cadastro de Usuário</h2>
       <form onSubmit={handleRegister}>
-        <input
+        <InputStyled
           type="text"
           placeholder="Nome de Usuário"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        <input
+        <InputStyled
           type="text"
           placeholder="Empresa"
           value={company}
           onChange={(e) => setCompany(e.target.value)}
           required
         />
-        <input
+        <InputStyled
           type="password"
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Entrar</button>
-        <button type="button" onClick={handleRegister}>Criar Conta</button>
+        <ButtonStyled type="submit">Entrar</ButtonStyled>
+        <ButtonStyled type="button" onClick={handleRegister}>
+          Criar Conta
+        </ButtonStyled>
       </form>
     </div>
   );
-};
+}

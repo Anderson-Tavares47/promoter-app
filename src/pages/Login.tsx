@@ -67,6 +67,7 @@ export default function Login() {
       <section style={{ display: "flex" }}>
         <FormStyled onSubmit={handleLogin}>
           <Image
+            className="imgLogo"
             src="/logo.svg"
             alt="logo"
             width={200}
@@ -123,6 +124,7 @@ export default function Login() {
         </FormStyled>
         <ConteinerStyled>
           <Image
+            className="imgStyle"
             src="/supermaket.svg"
             alt="supermaket"
             width={500}

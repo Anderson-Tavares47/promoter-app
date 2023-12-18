@@ -18,6 +18,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { FaPenToSquare } from "react-icons/fa6";
 
 export default function NavBarTest() {
   return (
@@ -70,7 +71,14 @@ export default function NavBarTest() {
               />
             </ListItemSuffix>
           </ListItem>
-
+          <Link href={"/Pesquisas"}>
+            <ListItem>
+              <ListItemPrefix>
+                <FaPenToSquare className="h-5 w-5" />
+              </ListItemPrefix>
+              Pesquisas
+            </ListItem>
+          </Link>
           <ListItem>
             <ListItemPrefix>
               <Cog6ToothIcon className="h-5 w-5" />

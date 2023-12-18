@@ -5,6 +5,7 @@ import { FaPerson, FaPlus } from "react-icons/fa6";
 import { z, ZodError } from "zod";
 
 const userSchema = z.object({
+  id: z.number().optional(),
   name: z.string().min(3, "O nome deve ter no mínimo 3 caracteres"),
   email: z.string().email("Insira um endereço de e-mail válido"),
   celular: z.string().refine((value) => /^\d{10}$/i.test(value), {
